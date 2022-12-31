@@ -107,7 +107,7 @@ class Game extends JFrame{
         int random_choice = (int)((Math.random()*10)%3);
         String computer = list[random_choice];
 
-        // Display computer move on frame and game logic
+        // Display computer move on frame
         computerMove.setText(computer);
         if(random_choice == 0){
             computerMove.setIcon(rock_img);
@@ -118,6 +118,47 @@ class Game extends JFrame{
         else{
             computerMove.setIcon(scissor_img);
         }
+
+        // Game logic
+        String res = "";
+        if(player.equals(computer)){
+            res = "Draw";
+        }
+        else if(player.equals("Rock")){
+            if(computer.equals("Paper")){
+                res = "You Lose!";
+                computer_score++;
+            }
+            else{
+                res = "You Win!";
+                player_score++;
+            }
+        }
+        else if(player.equals("Paper")){
+            if(computer.equals("Scissor")){
+                res = "You Lose!";
+                computer_score++;
+            }
+            else{
+                res = "You Win!";
+                player_score++;
+            }
+        }
+        else{
+            // Player is Scissor
+            if(computer.equals("Rock")){
+                res = "You Lose!";
+                computer_score++;
+            }
+            else{
+                res = "You Win!";
+                player_score++;
+            }
+        } // End of game logic
+
+        result.setText(res);
+        playerScore.setText("Player wins: " + player_score);
+        computerScore.setText("Computer wins: " + computer_score);
     }
 
     public static void main(String[] args){
