@@ -43,6 +43,26 @@ class Game extends JFrame{
         scissor_label.setVerticalTextPosition(JLabel.BOTTOM);
         scissor_label.setBounds(350, 300, 100, 100);
 
+        // Add mouse listener to labels (like buttons)
+        rock_label.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                // Call the calculate method
+                calculate(rock_label.getText());
+            }
+        });
+
+        paper_label.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                calculate(paper_label.getText());
+            }
+        });
+
+        scissor_label.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                calculate(scissor_label.getText());
+            }
+        });
+
         // Add components in the frame (game window)
         add(rock_label);
         add(paper_label);
