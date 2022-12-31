@@ -22,18 +22,17 @@ class Game extends JFrame{
         scissor_img = new ImageIcon(new ImageIcon("src/scissor.png").getImage().getScaledInstance(80, 80, Image.SCALE_DEFAULT));
 
         // Create label
-
         // Score
         JLabel score = new JLabel("Score");
-        score.setBounds(500, 0, 100, 100);
+        score.setBounds(20, 0, 100, 100);
 
         computerScore = new JLabel();
         computerScore.setText("Computer: 0");
-        computerScore.setBounds(500, 15, 100, 100);
+        computerScore.setBounds(20, 15, 100, 100);
 
         playerScore = new JLabel();
         playerScore.setText("Player: 0");
-        playerScore.setBounds(500, 30, 100, 100);
+        playerScore.setBounds(20, 30, 100, 100);
 
         // Computer move
         computerMove = new JLabel();
@@ -45,6 +44,21 @@ class Game extends JFrame{
         result = new JLabel();
         result.setFont(new Font("Arial", Font.BOLD, 20));
         result.setBounds(250, 450, 100, 100);
+
+        // Computer label
+        JLabel computer_label = new JLabel();
+        computer_label.setText("Computer");
+        computer_label.setBounds(260, 180, 100, 100);
+
+        // Versus label
+        JLabel versus = new JLabel();
+        versus.setText("VS");
+        versus.setBounds(280, 200, 100, 100);
+
+        // Player label
+        JLabel player_label = new JLabel();
+        player_label.setText("Player");
+        player_label.setBounds(270, 220, 100, 100);
 
         // Rock label
         JLabel rock_label = new JLabel();
@@ -99,6 +113,9 @@ class Game extends JFrame{
         add(score);
         add(computerScore);
         add(playerScore);
+        add(computer_label);
+        add(versus);
+        add(player_label);
         setLayout(null);
     }
 
