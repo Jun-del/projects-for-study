@@ -5,7 +5,6 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.Image;
-import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseAdapter;
 
@@ -26,13 +25,14 @@ class Game extends JFrame{
         JLabel score = new JLabel("Score");
         score.setBounds(20, 0, 100, 100);
 
+
         computerScore = new JLabel();
         computerScore.setText("Computer: 0");
-        computerScore.setBounds(20, 15, 100, 100);
+        computerScore.setBounds(20, 15, 150, 100);
 
         playerScore = new JLabel();
         playerScore.setText("Player: 0");
-        playerScore.setBounds(20, 30, 100, 100);
+        playerScore.setBounds(20, 30, 150, 100);
 
         // Computer move
         computerMove = new JLabel();
@@ -120,9 +120,9 @@ class Game extends JFrame{
     }
 
     public void calculate(String player){
-        String[] list = {"Rock", "Paper", "Scissor"};
+        String[] choice = {"Rock", "Paper", "Scissor"};
         int random_choice = (int)((Math.random()*10)%3);
-        String computer = list[random_choice];
+        String computer = choice[random_choice];
 
         // Display computer move on frame
         computerMove.setText(computer);
