@@ -10,6 +10,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseAdapter;
 
 class Game extends JFrame{
+    JLabel computerMove, result;
     ImageIcon rock_img, paper_img, scissor_img;
 
     public void setup(){
@@ -19,6 +20,15 @@ class Game extends JFrame{
         scissor_img = new ImageIcon(new ImageIcon("src/scissor.png").getImage().getScaledInstance(80, 80, Image.SCALE_DEFAULT));
 
         // Create label
+        computerMove = new JLabel();
+        computerMove.setHorizontalTextPosition(JLabel.CENTER);
+        computerMove.setVerticalTextPosition(JLabel.BOTTOM);
+        computerMove.setBounds(250, 90, 100, 100);
+
+        result = new JLabel();
+        result.setFont(new Font("Arial", Font.BOLD, 20));
+        result.setBounds(250, 450, 100, 100);
+
         // Rock label
         JLabel rock_label = new JLabel();
         rock_label.setText("Rock");
@@ -67,7 +77,27 @@ class Game extends JFrame{
         add(rock_label);
         add(paper_label);
         add(scissor_label);
+        add(computerMove);
+        add(result);
         setLayout(null);
+    }
+
+    public void calculate(String player){
+        String[] list = {"Rock", "Paper", "Scissor"};
+        int random_choice = (int)((Math.random()*10)%3);
+        String computer = list[random_choice];
+
+        // Display computer move on frame
+        computerMove.setText(computer);
+        if(random_choice == 0){
+            computerMove.setIcon(rock_img);
+        }
+        else if(random_choice == 1){
+            computerMove.setIcon(paper_img);
+        }
+        else{
+            computerMove.setIcon(scissor_img);
+        }
     }
 
     public static void main(String[] args){
