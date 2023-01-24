@@ -4,6 +4,10 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta
+			name="description"
+			content="Interactive image track movement with the ability to drag and move images along the track. It also contains functions to handle mouse and touch events, as well as animate the images in parallax along the track."
+		/>
 		<title>Sliding Images</title>
 		<link rel="stylesheet" href="style.css" />
 		<!-- Switch Off icon by Icons8 -->
@@ -11,14 +15,44 @@
 	</head>
 	<body>
 		<div id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
-			<img class="image" src="./images/img1.jpg" alt="image 1" draggable="false" />
-			<img class="image" src="./images/img2.jpg" alt="image 2" draggable="false" />
-			<img class="image" src="./images/img3.jpg" alt="image 3" draggable="false" />
-			<img class="image" src="./images/img4.jpg" alt="image 4" draggable="false" />
-			<img class="image" src="./images/img5.jpg" alt="image 5" draggable="false" />
-			<img class="image" src="./images/img6.jpg" alt="image 6" draggable="false" />
-			<img class="image" src="./images/img7.jpg" alt="image 7" draggable="false" />
-			<img class="image" src="./images/img8.jpg" alt="image 8" draggable="false" />
+			<img class="image" src="./images/img1.avif" alt="image 1" draggable="false" />
+			<img class="image" src="./images/img2.avif" alt="image 2" draggable="false" />
+			<img class="image" src="./images/img3.avif" alt="image 3" draggable="false" />
+			<img
+				class="image"
+				src="./images/img4.avif"
+				loading="lazy"
+				alt="image 4"
+				draggable="false"
+			/>
+			<img
+				class="image"
+				src="./images/img5.avif"
+				loading="lazy"
+				alt="image 5"
+				draggable="false"
+			/>
+			<img
+				class="image"
+				src="./images/img6.avif"
+				loading="lazy"
+				alt="image 6"
+				draggable="false"
+			/>
+			<img
+				class="image"
+				src="./images/img7.avif"
+				loading="lazy"
+				alt="image 7"
+				draggable="false"
+			/>
+			<img
+				class="image"
+				src="./images/img8.avif"
+				loading="lazy"
+				alt="image 8"
+				draggable="false"
+			/>
 		</div>
 		<script src="index.js"></script>
 	</body>
