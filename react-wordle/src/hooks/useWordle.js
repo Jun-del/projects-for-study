@@ -4,14 +4,39 @@ const useWordle = (solution) => {
 	const [turn, setTurn] = useState(0); // Track turns (6 guesses = game over)
 	const [currentGuess, setCurrentGuess] = useState(""); // Track what user is typing
 	const [guesses, setGuesses] = useState([]); // Each guess is an array
-	const [history, setHistory] = useState(["hello", "nihao"]); // Each guess is a string
+	const [history, setHistory] = useState([]); // Each guess is a string
 	const [isCorrect, setIsCorrect] = useState(false); // When user win = True
 
 	// Format a guess into an array of letter objects
 	// e.g., [{key: "a", color: "yellow"}]
 
 	const formatGuess = () => {
-		console.log("Formatting the guess", currentGuess);
+		// Spread the string into an array of letters
+		let solutionArray = [...solution];
+		let formattedGuess = [...currentGuess].map((letter) => {
+			// Default the color to gray
+			return { key: letter, color: "grey" };
+		});
+
+		// Find any green letter (correct position and letters)
+		formattedGuess.forEach((letter, index) => {
+			// If solution character[index] === answer character
+			if (solutionArray[index] === letter.key) {
+				formattedGuess[index].color = "green";
+				solutionArray[index] = null;
+			}
+		});
+
+		// Find any yellow colors
+		formattedGuess.forEach((letter, i) => {
+			if (solutionArray.includes(letter.key) && letter.color !== "green") {
+				formattedGuess[i].color = "yellow";
+				solutionArray[solutionArray.indexOf(letter.key)] = null;
+			}
+		});
+
+		// Return the array of letter objects and color
+		return formattedGuess;
 	};
 
 	// Add a new guess to the guesses state
@@ -43,7 +68,8 @@ const useWordle = (solution) => {
 			}
 
 			// Insert the guess as valid input
-			formatGuess(currentGuess);
+			const formatted = formatGuess();
+			console.log(formatted);
 		}
 
 		if (key === "Backspace") {
