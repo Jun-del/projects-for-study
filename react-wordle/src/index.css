@@ -94,3 +94,25 @@ h1 {
 		color: #fff;
 	}
 }
+
+.row.current > div.filled {
+	animation: bounce 0.2s ease-in-out forwards;
+}
+
+/* When use enter letters */
+@keyframes bounce {
+	0% {
+		/* Dont change the size (1) */
+		transform: scale(1);
+		border-color: #ddd;
+	}
+
+	50% {
+		transform: scale(1.2);
+	}
+
+	100% {
+		transform: scale(1);
+		border-color: #333;
+	}
+}
