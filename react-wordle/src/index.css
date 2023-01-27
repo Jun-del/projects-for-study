@@ -115,6 +115,23 @@ h1 {
 	line-height: 50px;
 }
 
+/* Change key color based on guesses */
+.keypad > div.green {
+	background: #5ac85a;
+	color: #fff;
+	transition: all 0.3s ease-in;
+}
+.keypad > div.yellow {
+	background: #e2cc68;
+	color: #fff;
+	transition: all 0.3s ease-in;
+}
+.keypad > div.grey {
+	background: #a1a1a1;
+	color: #fff;
+	transition: all 0.3s ease-in;
+}
+
 /* When use enter letters */
 @keyframes bounce {
 	0% {

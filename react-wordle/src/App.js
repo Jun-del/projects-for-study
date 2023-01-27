@@ -63,3 +63,5 @@ game process:
       -- modal to say 'unlucky'
 
 */
+
+// json-server ./data/db.json --port 3001
