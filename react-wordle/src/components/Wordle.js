@@ -13,12 +13,26 @@ export default function Wordle({ solution }) {
 	useEffect(() => {
 		window.addEventListener("keyup", handleKeyUp);
 
-		return () => window.removeEventListener("keyup", handleKeyUp);
-	}, [handleKeyUp]); // Call everytime user type a letter
+		// Detach event listener if isCorrect is true
+		if (isCorrect) {
+			console.log("win");
+			window.removeEventListener("keyup", handleKeyUp);
+		}
 
-	useEffect(() => {
-		console.log(guesses, turn, isCorrect);
-	}, [guesses, turn, isCorrect]);
+		// When turns is over 5
+		if (turn > 5) {
+			console.log("out of guess");
+			window.removeEventListener("keyup", handleKeyUp);
+		}
+
+		return () => window.removeEventListener("keyup", handleKeyUp);
+	}, [handleKeyUp, isCorrect, turn]); // Call everytime user type a letter
+
+	// Relevant info log
+
+	// useEffect(() => {
+	// 	console.log(guesses, turn, isCorrect);
+	// }, [guesses, turn, isCorrect]);
 
 	return (
 		<div>
