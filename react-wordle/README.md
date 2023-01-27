@@ -72,3 +72,13 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 ### `json-server ./data/db.json --port 3001`
 
 To start and use the JSON server
+
+### TODO
+
+1. Alternative to json guesses data
+2. Modal message
+3. Add button to revert the guesses (one chance?)
+4. To give letter hint?
+5. Dark mode?
+6. Different CSS style
+7. Restart button at modal
