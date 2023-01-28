@@ -3,57 +3,113 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<!-- Switch Off icon by Icons8 -->
+		<link rel="icon" type="image/x-icon" href="/favicon.png" />
+		<link rel="stylesheet" href="style.css" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta
 			name="description"
 			content="Interactive image track movement with the ability to drag and move images along the track. It also contains functions to handle mouse and touch events, as well as animate the images in parallax along the track."
 		/>
 		<title>Sliding Images</title>
-		<link rel="stylesheet" href="style.css" />
-		<!-- Switch Off icon by Icons8 -->
-		<link rel="icon" href="favicon.png" type="image/x-icon" />
 	</head>
 	<body>
 		<div id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
-			<img class="image" src="./images/img1.avif" alt="image 1" draggable="false" />
-			<img class="image" src="./images/img2.avif" alt="image 2" draggable="false" />
-			<img class="image" src="./images/img3.avif" alt="image 3" draggable="false" />
 			<img
 				class="image"
-				src="./images/img4.avif"
+				src="https://images.unsplash.com/photo-1617709612173-d820eb8b862f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDJ8NnNNVmpUTFNrZVF8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60"
+				alt="image 1"
+				draggable="false"
+			/>
+			<img
+				class="image"
+				src="https://images.unsplash.com/photo-1666705040497-1890be6e357c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDV8NnNNVmpUTFNrZVF8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60"
+				alt="image 2"
+				draggable="false"
+			/>
+			<img
+				class="image"
+				src="https://images.unsplash.com/photo-1674407728563-f30774195b0f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDQ0fDZzTVZqVExTa2VRfHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+				alt="image 3"
+				draggable="false"
+			/>
+			<img
+				class="image"
+				src="https://images.unsplash.com/photo-1674068331911-555750338b11?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDU5fDZzTVZqVExTa2VRfHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
 				loading="lazy"
 				alt="image 4"
 				draggable="false"
 			/>
 			<img
 				class="image"
-				src="./images/img5.avif"
+				src="https://images.unsplash.com/photo-1673766791276-5f46fd720021?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDgxfDZzTVZqVExTa2VRfHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
 				loading="lazy"
 				alt="image 5"
 				draggable="false"
 			/>
 			<img
 				class="image"
-				src="./images/img6.avif"
+				src="https://images.unsplash.com/photo-1673412425066-d82ae90a6080?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDEyN3w2c01WalRMU2tlUXx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
 				loading="lazy"
 				alt="image 6"
 				draggable="false"
 			/>
 			<img
 				class="image"
-				src="./images/img7.avif"
+				src="https://images.unsplash.com/photo-1673560199041-21c35ef9dac1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDEwMnw2c01WalRMU2tlUXx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
 				loading="lazy"
 				alt="image 7"
 				draggable="false"
 			/>
 			<img
 				class="image"
-				src="./images/img8.avif"
+				src="https://images.unsplash.com/photo-1673129864174-8ae385626974?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDE0M3w2c01WalRMU2tlUXx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
 				loading="lazy"
 				alt="image 8"
 				draggable="false"
 			/>
 		</div>
-		<script src="index.js"></script>
+		<!-- <div id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
+			<img class="image" src="/img1.avif" alt="image 1" draggable="false" />
+			<img class="image" src="/img2.avif" alt="image 2" draggable="false" />
+			<img class="image" src="/img3.avif" alt="image 3" draggable="false" />
+			<img
+				class="image"
+				src="/img4.avif"
+				loading="lazy"
+				alt="image 4"
+				draggable="false"
+			/>
+			<img
+				class="image"
+				src="/img5.avif"
+				loading="lazy"
+				alt="image 5"
+				draggable="false"
+			/>
+			<img
+				class="image"
+				src="/img6.avif"
+				loading="lazy"
+				alt="image 6"
+				draggable="false"
+			/>
+			<img
+				class="image"
+				src="/img7.avif"
+				loading="lazy"
+				alt="image 7"
+				draggable="false"
+			/>
+			<img
+				class="image"
+				src="/img8.avif"
+				loading="lazy"
+				alt="image 8"
+				draggable="false"
+			/>
+		</div> -->
+
+		<script type="module" src="/main.js"></script>
 	</body>
 </html>
