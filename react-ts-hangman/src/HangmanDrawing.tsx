@@ -1,21 +1,22 @@
 import styles from './HangmanDrawing.module.css';
 
-const Head = <div className={styles.head}></div>;
-const Body = <div className={styles.body}></div>;
-const RightArm = <div className={styles.rightArm}></div>;
-const LeftArm = <div className={styles.leftArm}></div>;
-const RightLeg = <div className={styles.rightLeg}></div>;
-const LeftLeg = <div className={styles.leftLeg}></div>;
+const HEAD = <div className={styles.head}></div>;
+const BODY = <div className={styles.body}></div>;
+const RIGHT_ARM = <div className={styles.rightArm}></div>;
+const LEFT_ARM = <div className={styles.leftArm}></div>;
+const RIGHT_LEG = <div className={styles.rightLeg}></div>;
+const LEFT_LEG = <div className={styles.leftLeg}></div>;
 
-export default function HangmanDrawing() {
+const BODY_PARTS = [HEAD, BODY, RIGHT_ARM, LEFT_ARM, RIGHT_LEG, LEFT_LEG];
+
+type HangmanDrawingProps = {
+  numberOfGuesses: number;
+};
+
+export default function HangmanDrawing({ numberOfGuesses }: HangmanDrawingProps) {
   return (
     <div className={styles.hangman}>
-      {Head}
-      {Body}
-      {RightArm}
-      {LeftArm}
-      {RightLeg}
-      {LeftLeg}
+      {BODY_PARTS.slice(0, numberOfGuesses)}
       <div className={styles.bar} />
       <div className={styles.rope} />
       <div className={styles.pole} />

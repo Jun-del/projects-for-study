@@ -1,12 +1,14 @@
 import styles from './HangmanWord.module.css';
 
-const word = 'test';
-const guessedLetters = ['a', 'b', 'c'];
+type HangmanWordProps = {
+  guessedLetters: string[];
+  wordToGuess: string;
+};
 
-export default function HangmanWord() {
+export default function HangmanWord({ guessedLetters, wordToGuess }: HangmanWordProps) {
   return (
     <div className={styles.word}>
-      {word.split('').map((letter, index) => (
+      {wordToGuess.split('').map((letter, index) => (
         <span className={styles.underline}>
           <span
             key={index}
