@@ -14,9 +14,8 @@ export default function HangmanWord({
   return (
     <div className={styles.word}>
       {wordToGuess.split('').map((letter, index) => (
-        <span className={styles.underline}>
+        <span className={styles.underline} key={index}>
           <span
-            key={index}
             className={
               guessedLetters.includes(letter) || revealWord ? styles.visible : styles.hidden
             }

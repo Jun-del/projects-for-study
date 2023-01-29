@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState } from 'react';
-import words from './WordList.json';
+import words from './data/WordList.json';
 import styles from './App.module.css';
-import HangmanDrawing from './HangmanDrawing';
-import HangmanWord from './HangmanWord';
-import Keyboard from './Keyboard';
+import HangmanDrawing from './drawing/HangmanDrawing';
+import HangmanWord from './word/HangmanWord';
+import Keyboard from './keyboard/Keyboard';
 
 function getWord() {
   // Pick a random word from the list
