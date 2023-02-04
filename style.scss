@@ -1,11 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@200;400;700&display=swap");
+
 body {
 	margin: 0;
 	height: 100vh;
-	font-family: "Poppins", sans-serif;
+	font-family: "Poppins";
 }
-
 .wrapper {
-	overflow: hidden;
+	overflow-x: hidden;
 	position: relative;
 }
 * {
@@ -15,7 +16,7 @@ body {
 svg {
 	position: absolute;
 	top: 12em;
-	left: 10vh;
+	left: 10vw;
 	width: 50vw;
 
 	.mask {
@@ -32,7 +33,7 @@ svg {
 		gap: 3em;
 
 		p {
-			font-size: 0.8em;
+			font-size: 0.8rem;
 		}
 	}
 
@@ -47,13 +48,13 @@ svg {
 
 		p {
 			font-size: 1.2rem;
-			margin: 50vw;
+			width: 50vw;
 		}
 
 		ul {
 			list-style-type: none;
 			display: flex;
-			gap: 3rem;
+			gap: 3em;
 			width: 100%;
 			height: 300px;
 			padding: 0;
