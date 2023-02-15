@@ -8,4 +8,8 @@ dotenv.config();
 
 const router = express.Router();
 
+router.route("/").get(async (req, res) => {
+  res.send("Hello from postRoutes");
+});
+
 export default router;
