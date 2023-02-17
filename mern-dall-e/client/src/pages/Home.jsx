@@ -15,7 +15,7 @@ const Home = () => {
   const [allPosts, setAllPosts] = useState(null);
 
   const [searchText, setSearchText] = useState("");
-  const [searchResults, setSearchResults] = useState(null);
+  const [searchedResults, setSearchedResults] = useState(null);
   const [searchTimeout, setSearchTimeout] = useState(null);
 
   useEffect(() => {
@@ -46,17 +46,17 @@ const Home = () => {
   }, []);
 
   const handleSearchChange = (e) => {
+    clearTimeout(searchTimeout);
     setSearchText(e.target.value);
 
     setSearchTimeout(
       setTimeout(() => {
-        const searchResults = allPosts.filter(
-          (post) =>
-            post.title.toLowerCase().includes(searchText.toLowerCase()) ||
-            post.prompt.toLowerCase().includes(searchText.toLowerCase()),
+        const searchResult = allPosts.filter(
+          (item) =>
+            item.name.toLowerCase().includes(searchText.toLowerCase()) ||
+            item.prompt.toLowerCase().includes(searchText.toLowerCase()),
         );
-
-        setSearchResults(searchResults);
+        setSearchedResults(searchResult);
       }, 500),
     );
   };
@@ -98,7 +98,7 @@ const Home = () => {
 
             <div className="grid lg:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-3">
               {searchText ? (
-                <RenderCards data={searchResults} title="No search results found" />
+                <RenderCards data={searchedResults} title="No search results found" />
               ) : (
                 <RenderCards data={allPosts} title="No posts found" />
               )}
