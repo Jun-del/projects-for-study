@@ -1,13 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Skybox</title>
-  </head>
-  <body>
-    <canvas class="webgl"></canvas>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+	<head>
+		<meta charset="UTF-8" />
+		<!-- Sky icons created by Freepik - Flaticon -->
+		<link rel="icon" type="image/svg+xml" href="/cloudy.png" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Skybox</title>
+	</head>
+	<body>
+		<canvas class="webgl"></canvas>
+		<script type="module" src="/src/main.ts"></script>
+
+		<div class="buttons">
+			<input type="file" id="texture-input" accept=".jpg,.jpeg,.png" />
+			<button id="texture-btn" title="Upload Images (.jpg / .jpeg / .png)">Upload Texture</button>
+			<button id="stop-orbit-btn">Stop Orbit</button>
+		</div>
+	</body>
 </html>
