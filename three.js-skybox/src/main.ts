@@ -15,7 +15,7 @@ const scene = new THREE.Scene();
  * Texture
  */
 const textureLoader = new THREE.TextureLoader();
-const texture = textureLoader.load("/static/initialTexture.jpg");
+const texture = textureLoader.load("/initialTexture.jpg");
 texture.colorSpace = THREE.SRGBColorSpace;
 
 /**
