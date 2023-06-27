@@ -1,5 +1,5 @@
 import Head from "next/head";
-// import Link from "next/link";
+import Link from "next/link";
 import { SignInButton, useUser } from "@clerk/nextjs";
 
 import { api } from "~/utils/api";
@@ -95,12 +95,17 @@ const PostView = (props: PostWithUser) => {
       />
       <div className="flex flex-col">
         <div className="flex text-slate-300">
-          <span>
-            {`@${author.username}`}
-            <span className="font-thin">{`\u00A0· ${dayjs(
-              post.createdAt
-            ).fromNow()}`}</span>
-          </span>
+          <Link href={`/@${author.username}`}>
+            <span>{`@${author.username}`}</span>
+          </Link>
+
+          <span className="font-thin">{`\u00A0·`}</span>
+
+          <Link href={`/post/${post.id}`}>
+            <span className="font-thin">
+              {`\u00A0${dayjs(post.createdAt).fromNow()}`}
+            </span>
+          </Link>
         </div>
         <span className="text-xl">{post.content}</span>
       </div>
