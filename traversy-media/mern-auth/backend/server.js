@@ -1,14 +1,19 @@
 import express from "express";
 import dotenv from "dotenv";
-import userRoutes from "./routes/userRoutes.js";
 dotenv.config();
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
-
+import connectDB from "./config/db.js";
 const port = process.env.PORT || 5000;
+import userRoutes from "./routes/userRoutes.js";
+
+connectDB();
 
 const app = express();
 
-// * POST /api/users/auth
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// * localhost:5000/api/users/
 app.use("/api/users", userRoutes);
 
 app.get("/", (req, res) => {
