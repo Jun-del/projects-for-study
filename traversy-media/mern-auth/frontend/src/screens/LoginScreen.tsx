@@ -38,18 +38,10 @@ const LoginScreen = () => {
 	});
 
 	function onSubmit(values: z.infer<typeof formSchema>) {
-		// Do something with the form values.
+		// TODO: Do something with the form values.
 		// ✅ This will be type-safe and validated.
 		console.log(values);
 	}
-
-	// const [email, setEmail] = useState("");
-	// const [password, setPassword] = useState("");
-
-	// const submitHandler = async (event: React.FormEvent<HTMLFormElement>) => {
-	// 	event.preventDefault();
-	// 	console.log("submit");
-	// };
 
 	return (
 		<FormContainer>
@@ -93,7 +85,7 @@ const LoginScreen = () => {
 				</form>
 			</Form>
 
-			<div className="mt-4">
+			<div className="mt-1">
 				<span className="text-sm text-gray-600">Don't have an account?</span>
 				<Link
 					to="/register"

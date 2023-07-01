@@ -6,8 +6,8 @@ interface Props {
 
 const FormContainer = ({ children }: Props) => {
 	return (
-		<div className="flex justify-center items-center mt-10">
-			<div className="w-full md:w-1/3 border-2 rounded-md p-8">{children}</div>
+		<div className="flex justify-center items-center mt-0 md:mt-8 p-6 md:p-0">
+			<div className="w-full md:w-1/3 border-2 rounded-md p-6">{children}</div>
 		</div>
 	);
 };
