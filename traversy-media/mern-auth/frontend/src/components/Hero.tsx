@@ -7,7 +7,8 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 import { LogIn, UserPlus } from "lucide-react";
-import { buttonVariants } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
 	return (
@@ -28,19 +29,17 @@ const Hero = () => {
 
 					<CardFooter>
 						<div className="flex space-x-4">
-							<a
-								className={buttonVariants({ variant: "default" })}
-								href="/login"
-							>
-								<UserPlus className="mr-2 h-4 w-4" /> Sign In
-							</a>
+							<Link to="/login">
+								<Button>
+									<UserPlus className="mr-2 h-4 w-4" /> Sign In
+								</Button>
+							</Link>
 
-							<a
-								className={buttonVariants({ variant: "secondary" })}
-								href="/register"
-							>
-								<LogIn className="mr-2 h-4 w-4" /> Sign Up
-							</a>
+							<Link to="/register">
+								<Button variant="secondary">
+									<LogIn className="mr-2 h-4 w-4" /> Sign Up
+								</Button>
+							</Link>
 						</div>
 					</CardFooter>
 				</Card>
