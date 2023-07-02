@@ -1,6 +1,10 @@
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import * as z from "zod";
 import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
+import { useLoginMutation } from "@/slices/usersApiSlice";
+import { setCredentials } from "@/slices/authSlice";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import FormContainer from "@/components/FormContainer.tsx";
@@ -37,10 +41,35 @@ const LoginScreen = () => {
 		},
 	});
 
-	function onSubmit(values: z.infer<typeof formSchema>) {
-		// TODO: Do something with the form values.
-		// ✅ This will be type-safe and validated.
-		console.log(values);
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
+
+	const [login, { isLoading }] = useLoginMutation();
+
+	const { userInfo } = useSelector(
+		(state: {
+			auth: {
+				userInfo: {
+					email: string;
+					password: string;
+				};
+			};
+		}) => state.auth
+	);
+
+	useEffect(() => {
+		if (userInfo) {
+			navigate("/");
+		}
+	}, [navigate, userInfo]);
+
+	async function onSubmit(values: z.infer<typeof formSchema>) {
+		const validatedForm = formSchema.parse(values);
+
+		// unwrap() is a utility function that returns the payload of a successful response
+		const res = await login(validatedForm).unwrap();
+		dispatch(setCredentials({ ...res }));
+		navigate("/");
 	}
 
 	return (
