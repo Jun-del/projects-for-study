@@ -2,10 +2,11 @@ import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import * as z from "zod";
 import { useForm } from "react-hook-form";
-import { useDispatch, useSelector } from "react-redux";
+import { useAppDispatch, useAppSelector } from "@/hooks";
 import { useLoginMutation } from "@/slices/usersApiSlice";
 import { setCredentials } from "@/slices/authSlice";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "react-toastify";
 
 import FormContainer from "@/components/FormContainer.tsx";
 import { Button } from "@/components/ui/button";
@@ -19,6 +20,7 @@ import {
 	FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import Loader from "@/components/Loader";
 
 const formSchema = z.object({
 	email: z.string().email(),
@@ -41,21 +43,23 @@ const LoginScreen = () => {
 		},
 	});
 
+	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
-	const dispatch = useDispatch();
 
 	const [login, { isLoading }] = useLoginMutation();
 
-	const { userInfo } = useSelector(
-		(state: {
-			auth: {
-				userInfo: {
-					email: string;
-					password: string;
-				};
-			};
-		}) => state.auth
-	);
+	// const { userInfo } = useSelector(
+	// 	(state: {
+	// 		auth: {
+	// 			userInfo: {
+	// 				email: string;
+	// 				password: string;
+	// 			};
+	// 		};
+	// 	}) => state.auth
+	// );
+
+	const { userInfo } = useAppSelector((state) => state.auth);
 
 	useEffect(() => {
 		if (userInfo) {
@@ -63,14 +67,26 @@ const LoginScreen = () => {
 		}
 	}, [navigate, userInfo]);
 
-	async function onSubmit(values: z.infer<typeof formSchema>) {
+	const onSubmit = async (values: z.infer<typeof formSchema>) => {
 		const validatedForm = formSchema.parse(values);
+		const { email, password } = validatedForm;
 
-		// unwrap() is a utility function that returns the payload of a successful response
-		const res = await login(validatedForm).unwrap();
-		dispatch(setCredentials({ ...res }));
-		navigate("/");
-	}
+		try {
+			// unwrap() is a utility function that returns the payload of a successful response
+			const res = await login({ email, password }).unwrap();
+
+			dispatch(setCredentials({ ...res }));
+			navigate("/");
+			console.log("fulfilled", res);
+		} catch (err) {
+			console.log(typeof err);
+			console.log("rejected", err);
+			toast.error(
+				(err as { data: { message: string } }).data.message ||
+					(err as { error: string })?.error
+			);
+		}
+	};
 
 	return (
 		<FormContainer>
@@ -108,6 +124,9 @@ const LoginScreen = () => {
 							</FormItem>
 						)}
 					/>
+
+					{isLoading && <Loader />}
+
 					<div className="flex justify-end">
 						<Button type="submit">Sign in</Button>
 					</div>
