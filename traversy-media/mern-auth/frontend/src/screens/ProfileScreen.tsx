@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -7,8 +6,8 @@ import { useAppDispatch, useAppSelector } from "@/hooks";
 import { toast } from "react-toastify";
 import FormContainer from "@/components/FormContainer.tsx";
 import { Button } from "@/components/ui/button";
-import { useRegisterMutation } from "@/slices/usersApiSlice";
 import { setCredentials } from "@/slices/authSlice";
+import { useUpdateUserMutation } from "@/slices/usersApiSlice";
 
 import {
 	Form,
@@ -30,53 +29,70 @@ const formSchema = z
 			})
 			.max(16, {
 				message: "Name must be at most 16 characters long",
-			}),
-		email: z.string().email(),
-		password: z
-			.string()
-			.min(8, {
-				message: "Password must be at least 8 characters long",
 			})
-			.max(16, {
-				message: "Password must be at most 16 characters long",
-			}),
-		confirmPassword: z
-			.string()
-			.min(8, {
-				message: "Confirm password must be at least 8 characters long",
-			})
-			.max(16, {
-				message: "Confirm password must be at most 16 characters long",
-			}),
+			.optional(),
+		email: z.string().email().optional(),
+		password: z.preprocess(
+			(password) => {
+				if (password === "" || !password || typeof password !== "string")
+					return undefined;
+				return password === "" ? undefined : password;
+			},
+			z
+				.string()
+				.min(8, {
+					message: "Password must be at least 8 characters long",
+				})
+				.max(16, {
+					message: "Password must be at most 16 characters long",
+				})
+				.optional()
+		),
+		confirmPassword: z.preprocess(
+			(confirmPassword) => {
+				if (
+					confirmPassword === "" ||
+					!confirmPassword ||
+					typeof confirmPassword !== "string"
+				)
+					return undefined;
+				return confirmPassword === "" ? undefined : confirmPassword;
+			},
+			z
+				.string()
+				.min(8, {
+					message: "Password must be at least 8 characters long",
+				})
+				.max(16, {
+					message: "Password must be at most 16 characters long",
+				})
+				.optional()
+		),
 	})
-	.refine((data) => data.password === data.confirmPassword, {
+	.refine((data) => !data.password || data.password === data.confirmPassword, {
 		message: "Passwords do not match",
 		path: ["confirmPassword"],
 	});
 
-const RegisterScreen = () => {
-	const form = useForm<z.infer<typeof formSchema>>({
+type Schema = z.infer<typeof formSchema>;
+
+const ProfileScreen = () => {
+	const form = useForm<Schema>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
-			name: "",
-			email: "",
+			name: `${useAppSelector((state) => state.auth.userInfo?.name)}` || "",
+			email: `${useAppSelector((state) => state.auth.userInfo?.email)}` || "",
 			password: "",
 			confirmPassword: "",
 		},
 	});
 
 	const dispatch = useAppDispatch();
-	const navigate = useNavigate();
+	// const navigate = useNavigate();
 
 	const { userInfo } = useAppSelector((state) => state.auth);
 
-	const [register, { isLoading }] = useRegisterMutation();
-
-	useEffect(() => {
-		if (userInfo) {
-			navigate("/");
-		}
-	}, [navigate, userInfo]);
+	const [updateProfile, { isLoading }] = useUpdateUserMutation();
 
 	const onSubmit = async (values: z.infer<typeof formSchema>) => {
 		const validatedForm = formSchema.parse(values);
@@ -86,10 +102,15 @@ const RegisterScreen = () => {
 			toast.error("Passwords do not match");
 		} else {
 			try {
-				const res = await register({ name, email, password }).unwrap();
-				dispatch(setCredentials({ ...res }));
+				const res = await updateProfile({
+					_id: userInfo?._id,
+					name: name || "",
+					email: email || "",
+					password: password || "",
+				}).unwrap();
 
-				navigate("/");
+				dispatch(setCredentials({ ...res }));
+				toast.success("Profile updated");
 			} catch (err) {
 				toast.error(
 					(err as { data: { message: string } }).data.message ||
@@ -101,7 +122,7 @@ const RegisterScreen = () => {
 
 	return (
 		<FormContainer>
-			<h1 className="font-semibold mb-4 text-2xl">Sign Up</h1>
+			<h1 className="font-semibold mb-4 text-2xl">Update Profile</h1>
 
 			<Form {...form}>
 				<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -112,7 +133,7 @@ const RegisterScreen = () => {
 							<FormItem>
 								<FormLabel>Name</FormLabel>
 								<FormControl>
-									<Input placeholder="JohnDoe" {...field} />
+									<Input placeholder={userInfo?.name} {...field} />
 								</FormControl>
 								<FormMessage />
 							</FormItem>
@@ -125,7 +146,7 @@ const RegisterScreen = () => {
 							<FormItem>
 								<FormLabel>Email</FormLabel>
 								<FormControl>
-									<Input placeholder="johndoe@email.com" {...field} />
+									<Input placeholder={userInfo?.email} {...field} />
 								</FormControl>
 								<FormMessage />
 							</FormItem>
@@ -140,7 +161,7 @@ const RegisterScreen = () => {
 								<FormControl>
 									<Input
 										type="password"
-										placeholder="Enter your password"
+										placeholder="Enter your new password"
 										{...field}
 									/>
 								</FormControl>
@@ -165,24 +186,16 @@ const RegisterScreen = () => {
 							</FormItem>
 						)}
 					/>
+
 					{isLoading && <Loader />}
+
 					<div className="flex justify-end">
-						<Button type="submit">Sign Up</Button>
+						<Button type="submit">Update</Button>
 					</div>
 				</form>
 			</Form>
-
-			<div className="mt-4">
-				<span className="text-sm text-gray-600">Already have an account?</span>
-				<Link
-					to="/login"
-					className="ml-1 text-sm text-blue-600 underline hover:text-blue-500"
-				>
-					Login
-				</Link>
-			</div>
 		</FormContainer>
 	);
 };
 
-export default RegisterScreen;
+export default ProfileScreen;

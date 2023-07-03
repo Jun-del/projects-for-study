@@ -1,7 +1,6 @@
 // import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "@/hooks";
-import { ChevronDown } from "lucide-react";
 import { useLogoutMutation } from "@/slices/usersApiSlice";
 import { logout } from "@/slices/authSlice";
 import {
@@ -20,9 +19,10 @@ const Header = () => {
 	const [logoutApiCall] = useLogoutMutation();
 
 	const logoutHandler = async () => {
+		// TODO: Empty brackets?
 		try {
-			await logoutApiCall().unwrap();
-			dispatch(logout());
+			await logoutApiCall({}).unwrap();
+			dispatch(logout({}));
 			navigate("/");
 		} catch (error) {
 			console.log(error);
@@ -42,21 +42,12 @@ const Header = () => {
 				</Link>
 				{userInfo ? (
 					<>
-						<DropdownMenu
-						// open={open}
-						>
-							<DropdownMenuTrigger
-							// onPointerEnter={(event) => {
-							// 	if (event.pointerType === "mouse") setOpen(true);
-							// }}
-							// onPointerLeave={(event) => {
-							// 	if (event.pointerType === "mouse") setOpen(false);
-							// }}
-							>
-								{userInfo.name}
-							</DropdownMenuTrigger>
+						<DropdownMenu>
+							<DropdownMenuTrigger>{userInfo.name}</DropdownMenuTrigger>
 							<DropdownMenuContent>
-								<DropdownMenuItem>Profile</DropdownMenuItem>
+								<DropdownMenuItem onClick={() => navigate("/profile")}>
+									Profile
+								</DropdownMenuItem>
 								<DropdownMenuItem onClick={logoutHandler}>
 									Log out
 								</DropdownMenuItem>

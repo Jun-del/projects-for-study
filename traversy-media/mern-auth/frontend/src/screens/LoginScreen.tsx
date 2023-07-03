@@ -48,17 +48,6 @@ const LoginScreen = () => {
 
 	const [login, { isLoading }] = useLoginMutation();
 
-	// const { userInfo } = useSelector(
-	// 	(state: {
-	// 		auth: {
-	// 			userInfo: {
-	// 				email: string;
-	// 				password: string;
-	// 			};
-	// 		};
-	// 	}) => state.auth
-	// );
-
 	const { userInfo } = useAppSelector((state) => state.auth);
 
 	useEffect(() => {
@@ -77,10 +66,7 @@ const LoginScreen = () => {
 
 			dispatch(setCredentials({ ...res }));
 			navigate("/");
-			console.log("fulfilled", res);
 		} catch (err) {
-			console.log(typeof err);
-			console.log("rejected", err);
 			toast.error(
 				(err as { data: { message: string } }).data.message ||
 					(err as { error: string })?.error
@@ -117,7 +103,11 @@ const LoginScreen = () => {
 							<FormItem>
 								<FormLabel>Password</FormLabel>
 								<FormControl>
-									<Input placeholder="Enter a password" {...field} />
+									<Input
+										type="password"
+										placeholder="Enter a password"
+										{...field}
+									/>
 								</FormControl>
 								<FormDescription>Please enter your password.</FormDescription>
 								<FormMessage />
