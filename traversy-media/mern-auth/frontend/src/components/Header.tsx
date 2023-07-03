@@ -19,7 +19,6 @@ const Header = () => {
 	const [logoutApiCall] = useLogoutMutation();
 
 	const logoutHandler = async () => {
-		// TODO: Empty brackets?
 		try {
 			await logoutApiCall({}).unwrap();
 			dispatch(logout({}));
