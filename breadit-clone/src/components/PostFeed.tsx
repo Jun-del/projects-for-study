@@ -1,7 +1,7 @@
 "use client";
 
 import { ExtendedPost } from "@/types/db";
-import { FC, useRef } from "react";
+import { FC, useEffect, useRef } from "react";
 import { useIntersection } from "@mantine/hooks";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { INFINITE_SCROLLING_PAGINATION_RESULTS } from "@/config";
@@ -9,6 +9,7 @@ import axios from "axios";
 
 import Post from "./Post";
 import { useSession } from "next-auth/react";
+import { Loader2 } from "lucide-react";
 
 interface PostFeedProps {
   initialPosts: ExtendedPost[];
@@ -46,6 +47,12 @@ const PostFeed: FC<PostFeedProps> = ({ initialPosts, subredditName }) => {
     }
   );
 
+  useEffect(() => {
+    if (entry?.isIntersecting) {
+      fetchNextPage(); // Load more posts when the last post comes into view
+    }
+  }, [entry, fetchNextPage]);
+
   const posts = data?.pages.flatMap((page) => page) ?? initialPosts;
 
   return (
@@ -65,6 +72,8 @@ const PostFeed: FC<PostFeedProps> = ({ initialPosts, subredditName }) => {
           return (
             <li key={post.id} ref={ref}>
               <Post
+                currentVote={currentVote}
+                votesAmt={votesAmount}
                 subredditName={post.subreddit.name}
                 post={post}
                 commentAmount={post.comments.length}
@@ -74,6 +83,8 @@ const PostFeed: FC<PostFeedProps> = ({ initialPosts, subredditName }) => {
         } else {
           return (
             <Post
+              currentVote={currentVote}
+              votesAmt={votesAmount}
               key={post.id}
               subredditName={post.subreddit.name}
               post={post}
@@ -82,6 +93,12 @@ const PostFeed: FC<PostFeedProps> = ({ initialPosts, subredditName }) => {
           );
         }
       })}
+
+      {isFetchingNextPage && (
+        <li className="flex justify-center">
+          <Loader2 className="w-6 h-6 text-zinc-500 animate-spin" />
+        </li>
+      )}
     </ul>
   );
 };

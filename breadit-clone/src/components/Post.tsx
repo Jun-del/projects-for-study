@@ -4,6 +4,9 @@ import { MessageSquare } from "lucide-react";
 
 import { FC, useRef } from "react";
 import EditorOutput from "./EditorOutput";
+import PostVoteClient from "./post-vote/PostVoteClient";
+
+type PartialVote = Pick<Vote, "type">;
 
 interface PostProps {
   subredditName: string;
@@ -12,15 +15,27 @@ interface PostProps {
     votes: Vote[];
   };
   commentAmount: number;
+  votesAmt: number;
+  currentVote?: PartialVote;
 }
 
-const Post: FC<PostProps> = ({ subredditName, post, commentAmount }) => {
+const Post: FC<PostProps> = ({
+  subredditName,
+  post,
+  commentAmount,
+  votesAmt,
+  currentVote,
+}) => {
   const postRef = useRef<HTMLDivElement>(null);
 
   return (
     <div className="rounded-md bg-white shadow">
       <div className="px-6 py-4 flex justify-between">
-        {/* TODO: post votes */}
+        <PostVoteClient
+          postId={post.id}
+          initialVote={currentVote?.type}
+          initialVotesAmt={votesAmt}
+        />
 
         <div className="w-0 flex-1">
           <div className="max-h-40 mt-1 text-xs text-gray-500">
@@ -38,13 +53,11 @@ const Post: FC<PostProps> = ({ subredditName, post, commentAmount }) => {
             <span>Posted by u/{post.author.name}</span>{" "}
             {formatTimeToNow(new Date(post.createdAt))}
           </div>
-
           <a href={`/r/${subredditName}/post/${post.id}`}>
             <h1 className="text-lg font-semibold py-2 leading-6 text-gray-900">
               {post.title}
             </h1>
           </a>
-
           <div
             className="relative text-sm max-h-40 w-full overflow-clip"
             ref={postRef}
