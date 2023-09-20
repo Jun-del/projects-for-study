@@ -1,9 +1,9 @@
 // Solution 1
 function isPalindrome(str) {
   // Remove all non-alphanumeric characters and convert the string to lowercase
-  const formattedStr = str.toLowerCase().replace(/[^a-z0-9]/g, '');
+  const formattedStr = str.toLowerCase().replace(/[^a-z0-9]/g, "");
   // Reverse the string
-  const reversedStr = formattedStr.split('').reverse().join('');
+  const reversedStr = formattedStr.split("").reverse().join("");
   // Return whether the formatted string is equal to the reversed string
   return formattedStr === reversedStr;
 }
@@ -23,7 +23,7 @@ function isPalindrome(str) {
 // Helper functions
 function removeNonAlphanumeric(str) {
   // Declare a variable to store the formatted string
-  let formattedStr = '';
+  let formattedStr = "";
   // Loop through the string
   for (let i = 0; i < str.length; i++) {
     // If the current character is alphanumeric, add it to the formatted string
@@ -47,7 +47,7 @@ function isAlphaNumeric(char) {
 
 function reverseString(str) {
   // Declare a variable to store the reversed string
-  let reversed = '';
+  let reversed = "";
   // Loop through the string backwards
   for (let i = str.length - 1; i >= 0; i--) {
     // Add each character to the reversed string

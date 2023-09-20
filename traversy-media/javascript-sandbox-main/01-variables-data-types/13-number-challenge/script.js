@@ -25,3 +25,23 @@ console.log(quotOutput);
 const rm = x % y;
 const rmOutput = `${x} % ${y} = ${rm}`;
 console.log(rmOutput);
+
+// My solution
+
+// const x = Math.floor(Math.random() * 100 + 1);
+// const y = Math.floor(Math.random() * 50 + 1);
+
+// console.log(x);
+// console.log(y);
+
+// const sum = x + y;
+// const difference = x - y;
+// const product = x * y;
+// const quotient = x / y;
+// const remainder = x % y;
+
+// console.log(sum);
+// console.log(difference);
+// console.log(product);
+// console.log(quotient);
+// console.log(remainder);

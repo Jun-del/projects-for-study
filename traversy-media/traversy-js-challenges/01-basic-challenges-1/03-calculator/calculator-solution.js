@@ -5,21 +5,21 @@ function calculator(num1, num2, operator) {
 
   // Use a switch statement to determine which operation to perform
   switch (operator) {
-    case '+':
+    case "+":
       result = num1 + num2;
       break; // Break out of the switch statement
-    case '-':
+    case "-":
       result = num1 - num2;
       break;
-    case '*':
+    case "*":
       result = num1 * num2;
       break;
-    case '/':
+    case "/":
       result = num1 / num2;
       break;
     default:
       // If the operator is not one of the above, throw an error
-      throw new Error('Invalid operator');
+      throw new Error("Invalid operator");
   }
 
   return result;
@@ -31,17 +31,17 @@ function calculator(num1, num2, operator) {
   let result;
 
   // Use if/else if/else statements to determine which operation to perform
-  if (operator === '+') {
+  if (operator === "+") {
     result = num1 + num2;
-  } else if (operator === '-') {
+  } else if (operator === "-") {
     result = num1 - num2;
-  } else if (operator === '*') {
+  } else if (operator === "*") {
     result = num1 * num2;
-  } else if (operator === '/') {
+  } else if (operator === "/") {
     result = num1 / num2;
   } else {
     // If the operator is not one of the above, throw an error
-    throw new Error('Invalid operator');
+    throw new Error("Invalid operator");
   }
 
   return result;
