@@ -14,7 +14,7 @@ datasource db {
 model Store {
   id        String   @id @default(uuid())
   name      String
-  userId    String
+  userId    String // ! userId is from auth
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
