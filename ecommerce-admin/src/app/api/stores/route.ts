@@ -3,6 +3,9 @@ import { auth } from "@clerk/nextjs";
 
 import prismadb from "@/lib/prismadb";
 
+// @desc   Create store
+// route   POST /api/stores
+// @access Public
 // * /api/stores
 export async function POST(req: Request) {
   try {
