@@ -9,9 +9,9 @@ import {
 } from "lucide-react";
 import { Store } from "@prisma/client";
 import { useParams, useRouter } from "next/navigation";
-
-import { useStoreModal } from "@/hooks/use-store-modal";
+import useStoreModal from "@/hooks/useStoreModal";
 import { cn } from "@/lib/utils";
+
 import {
   Popover,
   PopoverContent,
