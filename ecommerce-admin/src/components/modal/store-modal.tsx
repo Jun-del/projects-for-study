@@ -5,7 +5,7 @@ import axios from "axios";
 import { z } from "zod";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
-import useStoreModal from "@/hooks/useStoreModal";
+import { useStoreModal } from "@/hooks/useStoreModal";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 

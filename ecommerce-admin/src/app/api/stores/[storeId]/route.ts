@@ -5,7 +5,6 @@ import { NextResponse } from "next/server";
 // @desc   Update store
 // route   PATCH /api/stores/[storeId]
 // @access Public
-// * /api/stores/[storeId]
 
 export async function PATCH(
   req: Request,
@@ -49,7 +48,6 @@ export async function PATCH(
 // @desc   Delete store
 // route   DELETE /api/stores/[storeId]
 // @access Public
-// * /api/stores/[storeId]
 
 export async function DELETE(
   _req: Request,

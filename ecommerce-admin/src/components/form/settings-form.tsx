@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import toast from "react-hot-toast";
 import { useParams, useRouter } from "next/navigation";
-import useOrigin from "@/hooks/useOrigin";
+import { useOrigin } from "@/hooks/useOrigin";
 
 import Heading from "@/components/heading";
 import { Button } from "@/components/ui/button";

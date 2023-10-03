@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import { Store } from "@prisma/client";
 import { useParams, useRouter } from "next/navigation";
-import useStoreModal from "@/hooks/useStoreModal";
+import { useStoreModal } from "@/hooks/useStoreModal";
 import { cn } from "@/lib/utils";
 
 import {

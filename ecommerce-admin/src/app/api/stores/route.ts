@@ -6,7 +6,6 @@ import prismadb from "@/lib/prismadb";
 // @desc   Create store
 // route   POST /api/stores
 // @access Public
-// * /api/stores
 export async function POST(req: Request) {
   try {
     const { userId } = auth();
