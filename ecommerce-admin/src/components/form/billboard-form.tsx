@@ -7,7 +7,7 @@ import { Trash } from "lucide-react";
 import { Billboard } from "@prisma/client";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import toast from "react-hot-toast";
+import { toast } from "sonner";
 import { useParams, useRouter } from "next/navigation";
 
 import Heading from "@/components/heading";
@@ -88,7 +88,7 @@ const BillboardForm: React.FC<BillboardFormProps> = ({ initialData }) => {
         `/api/${params.storeId}/billboards/${params.billboardId}`
       );
       router.refresh();
-      router.push("/");
+      router.push(`/${params.storeId}/billboards`);
       toast.success("Billboard deleted.");
     } catch (error) {
       toast.error("Make sure you removed all categories using this billboard");
@@ -97,6 +97,8 @@ const BillboardForm: React.FC<BillboardFormProps> = ({ initialData }) => {
       setOpen(false);
     }
   };
+
+  // TODO: delete billboard button styling
 
   return (
     <>
@@ -111,11 +113,12 @@ const BillboardForm: React.FC<BillboardFormProps> = ({ initialData }) => {
         {initialData && (
           <Button
             variant="destructive"
-            size="icon"
+            size="sm"
             onClick={() => setOpen(true)}
             disabled={loading}
           >
-            <Trash className="h-4 w-4" />
+            <Trash className="mr-4 h-4 w-4" />
+            Delete billboard
           </Button>
         )}
       </div>
@@ -175,6 +178,7 @@ const BillboardForm: React.FC<BillboardFormProps> = ({ initialData }) => {
         </form>
       </Form>
 
+      {/* TODO: Delete separator? */}
       <Separator />
     </>
   );

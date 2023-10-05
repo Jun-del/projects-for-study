@@ -1,11 +1,11 @@
 "use client";
 
 import { Copy, Server } from "lucide-react";
-import toast from "react-hot-toast";
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge, BadgeProps } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { copyTextToClipboard } from "@/utils/copy-text-to-clipboard";
 
 type ApiAlertProps = {
   title: string;
@@ -28,13 +28,18 @@ const ApiAlert: React.FC<ApiAlertProps> = ({
   description,
   variant = "public",
 }) => {
-  const onCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(description);
-      toast.success("API Route copied to the cipboard.");
-    } catch (error) {
-      toast.error(`Failed to copy: ${error}`);
-    }
+  // TODO: delete
+  // const onCopy = async () => {
+  //   try {
+  //     await navigator.clipboard.writeText(description);
+  //     toast.success("API Route copied to the clipboard.");
+  //   } catch (error) {
+  //     toast.error(`Failed to copy: ${error}`);
+  //   }
+  // };
+
+  const onCopy = () => {
+    copyTextToClipboard(description, "API Route copied to the clipboard.");
   };
 
   return (
@@ -49,7 +54,7 @@ const ApiAlert: React.FC<ApiAlertProps> = ({
       <AlertDescription className="mt-4 flex items-center justify-between">
         <code
           className="relative rounded bg-muted px-[0.3rem] 
-        py-[0.2rem] font-mono text-sm font-semibold"
+                     py-[0.2rem] font-mono text-sm font-semibold"
         >
           {description}
         </code>
