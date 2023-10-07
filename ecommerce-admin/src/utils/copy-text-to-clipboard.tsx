@@ -5,7 +5,7 @@ export const copyTextToClipboard = async (
   toastMessage?: string
 ): Promise<void> => {
   if (!navigator?.clipboard) {
-    toast.error(`Failed to copy: Clipboard not supported`);
+    toast.error(`Failed to copy: Clipboard not supported.`);
     return;
   }
 
@@ -16,6 +16,6 @@ export const copyTextToClipboard = async (
       toast.success(toastMessage);
     }
   } catch (error) {
-    toast.error(`Failed to copy text "${text}": ${error}`);
+    toast.error(`Failed to copy text "${text}": ${error}.`);
   }
 };

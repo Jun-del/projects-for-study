@@ -15,11 +15,11 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { BillboardColumn } from "@/components/billboard-table/columns";
+import { CategoryColumn } from "@/components/category-table/columns";
 import AlertModal from "@/components/modal/alert-modal";
 
 type CellActionProps = {
-  data: BillboardColumn;
+  data: CategoryColumn;
 };
 
 const CellAction: React.FC<CellActionProps> = ({ data }) => {

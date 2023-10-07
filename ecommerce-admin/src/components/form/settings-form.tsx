@@ -56,7 +56,7 @@ const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
       router.refresh();
       toast.success("Store updated");
     } catch (error) {
-      toast.error("Something went wrong");
+      toast.error("Something went wrong.");
     } finally {
       setLoading(false);
     }
@@ -70,7 +70,7 @@ const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
       router.push("/");
       toast.success("Store deleted.");
     } catch (error) {
-      toast.error("Make sure you removed all products and categories first");
+      toast.error("Make sure you removed all products and categories first.");
     } finally {
       setLoading(false);
       setOpen(false);
@@ -89,11 +89,12 @@ const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
         <Heading title="Settings" description="Manage store preferences" />
         <Button
           variant="destructive"
-          size="icon"
+          size="default"
           onClick={() => setOpen(true)}
           disabled={loading}
         >
-          <Trash className="h-4 w-4" />
+          <Trash className="h-4 w-4 mr-2" />
+          Delete Store
         </Button>
       </div>
 
