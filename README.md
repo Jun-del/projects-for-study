@@ -24,3 +24,15 @@ References: <br>
 
 1. [Circle Collision](https://www.youtube.com/watch?v=789weryntzM/)
 2. [Rectangle Collision](https://www.youtube.com/watch?v=_MyPLZSGS3s/)
+
+## react-ts-hangman
+
+Reference: <br>
+
+1. [Web Dev Simplified](https://youtu.be/-ONUyenGnWw)
+
+## React Wordle Clone
+
+References: <b>
+
+1. [Make a Wordle Clone with React](https://www.youtube.com/playlist?list=PL4cUxeGkcC9gXdVXVJBmHpSI7zCEcjLUX)
