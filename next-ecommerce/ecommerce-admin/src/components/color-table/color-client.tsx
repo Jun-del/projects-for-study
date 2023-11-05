@@ -43,7 +43,6 @@ const ColorsClient: React.FC<ColorsClientProps> = ({ data }) => {
 
       <Separator />
 
-      {/* TODO: Error */}
       <ApiList entityName="colors" entityIdName="colorId" />
     </>
   );

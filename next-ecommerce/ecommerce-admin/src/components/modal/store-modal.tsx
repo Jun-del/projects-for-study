@@ -3,7 +3,6 @@
 import { useState } from "react";
 import axios from "axios";
 import { z } from "zod";
-import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useStoreModal } from "@/hooks/useStoreModal";
 import { useForm } from "react-hook-form";
@@ -28,7 +27,6 @@ const formSchema = z.object({
 
 const StoreModal = () => {
   const { isOpen, onClose } = useStoreModal();
-  const router = useRouter();
 
   const [loading, setLoading] = useState(false);
 
@@ -39,14 +37,11 @@ const StoreModal = () => {
     },
   });
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+  const onSubmit = async (value: z.infer<typeof formSchema>) => {
     try {
       setLoading(true);
 
-      const response = await axios.post("/api/stores", values);
-
-      // TODO: use either one
-      // router.push(`/${response.data.id}`);
+      const response = await axios.post("/api/stores", value);
 
       window.location.assign(`/${response.data.id}`);
     } catch (error) {
@@ -56,8 +51,7 @@ const StoreModal = () => {
       setLoading(false);
     }
 
-    // TODO: Create store
-    console.log(values);
+    toast.success(`Store ${value.name} created.`);
   };
 
   return (
@@ -67,7 +61,6 @@ const StoreModal = () => {
       isOpen={isOpen}
       onClose={onClose}
     >
-      {/* wrapper */}
       <div>
         <div className="space-y-4 py-2 pb-4"></div>
         <Form {...form}>
@@ -80,15 +73,13 @@ const StoreModal = () => {
                   <FormLabel>Name (Required)</FormLabel>
                   <FormControl>
                     <Input
-                      // TODO: no placeholder
-                      // placeholder="JohnDoe"
                       {...field}
                       disabled={loading}
                       autoComplete="name"
                       required
                     />
                   </FormControl>
-                  {/* <FormDescription>This is your store name.</FormDescription> */}
+                  <FormDescription>This is your store name.</FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
@@ -109,7 +100,6 @@ const StoreModal = () => {
             </div>
           </form>
         </Form>
-        {/* TODO: button here */}
       </div>
     </Modal>
   );

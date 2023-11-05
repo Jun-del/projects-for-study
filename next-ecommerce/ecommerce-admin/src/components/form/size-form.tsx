@@ -103,7 +103,7 @@ const SizeForm: React.FC<SizeFormProps> = ({ initialData }) => {
       />
       <div className="flex items-center justify-between">
         <Heading title={title} description={description} />
-        {/* TODO: delete size button styling */}
+
         {initialData && (
           <Button
             variant="destructive"
@@ -163,15 +163,11 @@ const SizeForm: React.FC<SizeFormProps> = ({ initialData }) => {
             />
           </div>
 
-          {/* TODO: Check if ml-auto is needed */}
-          <Button disabled={loading} className="ml-auto" type="submit">
+          <Button disabled={loading} type="submit">
             {action}
           </Button>
         </form>
       </Form>
-
-      {/* TODO: Delete separator? */}
-      <Separator />
     </>
   );
 };

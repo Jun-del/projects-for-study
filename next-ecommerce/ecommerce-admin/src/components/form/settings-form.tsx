@@ -126,8 +126,7 @@ const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
             />
           </div>
 
-          {/* TODO: Check if ml-auto is needed */}
-          <Button disabled={loading} className="ml-auto" type="submit">
+          <Button disabled={loading} type="submit">
             Save Changes
           </Button>
         </form>

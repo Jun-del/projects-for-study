@@ -30,7 +30,6 @@ export default async function DashboardLayout({
     redirect("/");
   }
 
-  // TODO: semantic main and header
   return (
     <div>
       <Navbar />

@@ -43,7 +43,6 @@ const SizesClient: React.FC<SizesClientProps> = ({ data }) => {
 
       <Separator />
 
-      {/* TODO: Error */}
       <ApiList entityName="sizes" entityIdName="sizeId" />
     </>
   );

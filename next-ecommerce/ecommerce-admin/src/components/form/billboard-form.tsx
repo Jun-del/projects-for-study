@@ -110,7 +110,6 @@ const BillboardForm: React.FC<BillboardFormProps> = ({ initialData }) => {
       />
       <div className="flex items-center justify-between">
         <Heading title={title} description={description} />
-        {/* TODO: delete billboard button styling */}
         {initialData && (
           <Button
             variant="destructive"
@@ -172,15 +171,11 @@ const BillboardForm: React.FC<BillboardFormProps> = ({ initialData }) => {
             />
           </div>
 
-          {/* TODO: Check if ml-auto is needed */}
           <Button disabled={loading} className="ml-auto" type="submit">
             {action}
           </Button>
         </form>
       </Form>
-
-      {/* TODO: Delete separator? */}
-      <Separator />
     </>
   );
 };

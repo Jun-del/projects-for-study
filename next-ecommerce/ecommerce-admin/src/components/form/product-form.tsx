@@ -144,7 +144,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
       />
       <div className="flex items-center justify-between">
         <Heading title={title} description={description} />
-        {/* TODO: delete product button styling */}
+
         {initialData && (
           <Button
             variant="destructive"
@@ -371,15 +371,11 @@ const ProductForm: React.FC<ProductFormProps> = ({
             />
           </div>
 
-          {/* TODO: Check if ml-auto is needed */}
-          <Button disabled={loading} className="ml-auto" type="submit">
+          <Button disabled={loading} type="submit">
             {action}
           </Button>
         </form>
       </Form>
-
-      {/* TODO: Delete separator? */}
-      <Separator />
     </>
   );
 };

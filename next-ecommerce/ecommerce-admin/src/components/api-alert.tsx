@@ -28,16 +28,6 @@ const ApiAlert: React.FC<ApiAlertProps> = ({
   description,
   variant = "public",
 }) => {
-  // TODO: delete
-  // const onCopy = async () => {
-  //   try {
-  //     await navigator.clipboard.writeText(description);
-  //     toast.success("API Route copied to the clipboard.");
-  //   } catch (error) {
-  //     toast.error(`Failed to copy: ${error}`);
-  //   }
-  // };
-
   const onCopy = () => {
     copyTextToClipboard(description, "API Route copied to the clipboard.");
   };

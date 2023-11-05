@@ -105,7 +105,6 @@ const ColorForm: React.FC<ColorFormProps> = ({ initialData }) => {
       />
       <div className="flex items-center justify-between">
         <Heading title={title} description={description} />
-        {/* TODO: delete color button styling */}
         {initialData && (
           <Button
             variant="destructive"
@@ -171,15 +170,11 @@ const ColorForm: React.FC<ColorFormProps> = ({ initialData }) => {
             />
           </div>
 
-          {/* TODO: Check if ml-auto is needed */}
-          <Button disabled={loading} className="ml-auto" type="submit">
+          <Button disabled={loading} type="submit">
             {action}
           </Button>
         </form>
       </Form>
-
-      {/* TODO: Delete separator? */}
-      <Separator />
     </>
   );
 };

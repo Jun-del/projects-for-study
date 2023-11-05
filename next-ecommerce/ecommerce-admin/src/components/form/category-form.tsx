@@ -108,8 +108,6 @@ const CategoryForm: React.FC<CategoryFormProps> = ({
     }
   };
 
-  // TODO: delete category button styling
-
   return (
     <>
       <AlertModal
@@ -195,15 +193,11 @@ const CategoryForm: React.FC<CategoryFormProps> = ({
             />
           </div>
 
-          {/* TODO: Check if ml-auto is needed */}
-          <Button disabled={loading} className="ml-auto" type="submit">
+          <Button disabled={loading} type="submit">
             {action}
           </Button>
         </form>
       </Form>
-
-      {/* TODO: Delete separator? */}
-      <Separator />
     </>
   );
 };
