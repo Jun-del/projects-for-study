@@ -1,5 +1,4 @@
 import { Billboard } from "@/types";
-import { toast } from "sonner";
 
 const URL = `${process.env.NEXT_PUBLIC_API_URL}/billboards`;
 
@@ -10,7 +9,6 @@ const getBillboard = async (id: string): Promise<Billboard | undefined> => {
 
     return billboard;
   } catch (error) {
-    toast.error("Something unexpected occurs.");
     console.error(error);
   }
 };

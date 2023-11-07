@@ -1,7 +1,5 @@
-import { toast } from "sonner";
-import qs from "query-string";
-
 import { Product } from "@/types";
+import qs from "query-string";
 
 const URL = `${process.env.NEXT_PUBLIC_API_URL}/products`;
 
@@ -29,7 +27,6 @@ const getProducts = async (query: Query): Promise<Product[] | undefined> => {
 
     return products;
   } catch (error) {
-    toast.error("Something unexpected occurs.");
     console.error(error);
   }
 };

@@ -9,13 +9,14 @@ export const Button = forwardRef<HTMLButtonElement, ButtomProps>(
   ({ className, children, disabled, type = "button", ...props }, ref) => {
     return (
       <button
-        ref={ref}
         className={cn(
           `w-auto rounded-full border-transparent 
-          bg-black px-5 py-3 font-semibold 
-          text-white transition hover:opacity-75 disabled:cursor-not-allowed disabled:opacity-50`,
+        bg-black px-5 py-3 font-semibold 
+        text-white transition hover:opacity-75 disabled:cursor-not-allowed disabled:opacity-50`,
           className,
         )}
+        ref={ref}
+        {...props}
       >
         {children}
       </button>
