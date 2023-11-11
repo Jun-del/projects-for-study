@@ -51,7 +51,7 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
               {products?.length === 0 && <NoResult />}
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
                 {products?.map((item) => (
-                  <ProductCard key={item.id} data={item} />
+                  <ProductCard key={`CategoryPage-${item.id}`} data={item} />
                 ))}
               </div>
             </div>

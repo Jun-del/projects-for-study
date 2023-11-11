@@ -1,5 +1,3 @@
-import { Toaster } from "sonner";
-
 import Container from "@/components/ui/container";
 import Billboard from "@/components/billboard";
 import getBillboard from "@/actions/get-billboard";
@@ -12,7 +10,6 @@ const HomePage = async () => {
 
   return (
     <>
-      <Toaster position="bottom-right" />
       <Container>
         <div className="space-y-10 pb-10">
           <Billboard data={billboard} />

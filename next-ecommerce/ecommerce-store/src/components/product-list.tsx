@@ -19,7 +19,7 @@ const ProductList: React.FC<ProductListProps> = ({ title, items }) => {
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {items.map((item) => (
-          <ProductCard key={item.id} data={item} />
+          <ProductCard key={`ProductList${item.id}`} data={item} />
         ))}
       </div>
     </div>
