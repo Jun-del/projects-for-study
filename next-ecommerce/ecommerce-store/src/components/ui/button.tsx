@@ -15,6 +15,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtomProps>(
         text-white transition hover:opacity-75 disabled:cursor-not-allowed disabled:opacity-50`,
           className,
         )}
+        disabled={disabled}
         ref={ref}
         {...props}
       >
